@@ -167,7 +167,7 @@ python ./decode
 | ROXR.b | 2500 | 184 | 4247 | ![7.4%](https://img.shields.io/badge/7.4%25-red) | ![7.4%](https://img.shields.io/badge/7.4%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
 | ROXR.l | 2500 | 177 | 4246 | ![7.1%](https://img.shields.io/badge/7.1%25-red) | ![7.1%](https://img.shields.io/badge/7.1%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
 | ROXR.w | 2500 | 165 | 8579 | ![6.6%](https://img.shields.io/badge/6.6%25-red) | ![7.6%](https://img.shields.io/badge/7.6%25-red) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
-| RTE | 2500 | 14 | 21017 | ![0.6%](https://img.shields.io/badge/0.6%25-red) | ![0.6%](https://img.shields.io/badge/0.6%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
+| RTE | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) |
 | RTR | 2500 | 153 | 20981 | ![6.1%](https://img.shields.io/badge/6.1%25-red) | ![6.1%](https://img.shields.io/badge/6.1%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
 | RTS | 2500 | 1263 | 12365 | ![50.5%](https://img.shields.io/badge/50.5%25-orange) | ![50.5%](https://img.shields.io/badge/50.5%25-orange) | ![—](https://img.shields.io/badge/---lightgrey) |
 | SBCD | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![—](https://img.shields.io/badge/---lightgrey) |

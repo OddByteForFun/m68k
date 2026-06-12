@@ -371,13 +371,45 @@ pub fn execTRAP(cpu: *Cpu, bus: anytype, opcode: u16) u32 {
 
 /// RTE — return from exception: pop SR then PC
 pub fn execRTE(cpu: *Cpu, bus: anytype) u32 {
-    const old_sr = bus.read16(cpu.a[7]) & 0xE07F;
+    if (!cpu.sr.s) {
+        return parent.exception(cpu, bus, 0x08, 0x4e73, "RTE");
+    }
+    const old_sr = bus.read16(cpu.a[7]) & 0xA71F;
     cpu.a[7] +%= 2;
     const ret_pc = bus.read32(cpu.a[7]);
-    cpu.pc = ret_pc;
     cpu.a[7] +%= 4;
+    const old_s = cpu.sr.s;
     cpu.sr.set(old_sr);
-    parent.leaveSupervisor(cpu);
+    const new_s = cpu.sr.s;
+
+    if (old_s and !new_s) {
+        cpu.ssp = cpu.a[7];
+        cpu.a[7] = cpu.usp;
+    } else if (!old_s and new_s) {
+        cpu.usp = cpu.a[7];
+        cpu.a[7] = cpu.ssp;
+    }
+
+    if ((ret_pc & 1) != 0) {
+        const saved_sr = cpu.sr.get();
+        const fc: u3 = if (cpu.sr.s) 6 else 2;
+        const ssw: u16 = 0x4E00 | (@as(u16, 1) << 6) | (@as(u16, 3) << 4) | @as(u16, fc);
+        parent.enterSupervisor(cpu);
+        cpu.a[7] -%= 14;
+        bus.write16(cpu.a[7], ssw);
+        bus.write16(cpu.a[7] + 2, @truncate(ret_pc >> 16));
+        bus.write16(cpu.a[7] + 4, @truncate(ret_pc));
+        bus.write16(cpu.a[7] + 6, 0x4E73);
+        bus.write16(cpu.a[7] + 8, saved_sr);
+        bus.write16(cpu.a[7] + 10, @truncate(cpu.pc >> 16));
+        bus.write16(cpu.a[7] + 12, @truncate(cpu.pc));
+        cpu.sr.s = true;
+        cpu.sr.t = false;
+        cpu.pc = bus.read32(4 * 3);
+        return 50;
+    }
+
+    cpu.pc = ret_pc;
     return 20;
 }
 
@@ -390,6 +422,8 @@ pub fn execSTOP(cpu: *Cpu, bus: anytype) u32 {
     const old_s = cpu.sr.s;
     cpu.sr.set(imm & 0xA71F);
     const new_s = cpu.sr.s;
+
+    // cette partie est normalement conservée par le masque et ne s'exécute jamais
     if (old_s and !new_s) {
         cpu.ssp = cpu.a[7];
         cpu.a[7] = cpu.usp;
@@ -398,7 +432,7 @@ pub fn execSTOP(cpu: *Cpu, bus: anytype) u32 {
         cpu.a[7] = cpu.ssp;
     }
     cpu.halted = true;
-    cpu.pc -= 2;
+    cpu.pc -= 2; // fonctionne mais pas logique ?
     return 4;
 }
 
@@ -500,7 +534,7 @@ fn bcdNegate(val: u8, x_val: u32) struct { result: u8, carry: bool, v: bool } {
     const hi: u32 = val >> 4;
     const x: u32 = x_val;
 
-    var result: u8 = @truncate((-% val) -% @as(u8, @truncate(x)));
+    var result: u8 = @truncate((-%val) -% @as(u8, @truncate(x)));
 
     const lo_borrow: bool = (lo + x > 0);
     if (lo_borrow) {
@@ -512,7 +546,7 @@ fn bcdNegate(val: u8, x_val: u32) struct { result: u8, carry: bool, v: bool } {
         result -%= 0x60;
     }
 
-    const bin_result: u8 = @as(u8, @truncate((-% val) -% x));
+    const bin_result: u8 = @as(u8, @truncate((-%val) -% x));
     const v: bool = ((result ^ bin_result) & bin_result & 0x80) != 0;
     return .{ .result = result, .carry = hi_borrow, .v = v };
 }
