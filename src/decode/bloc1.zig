@@ -383,10 +383,22 @@ pub fn execRTE(cpu: *Cpu, bus: anytype) u32 {
 
 /// STOP — load immediate into SR and halt
 pub fn execSTOP(cpu: *Cpu, bus: anytype) u32 {
+    if (!cpu.sr.s) {
+        return parent.exception(cpu, bus, 0x08, 0x4E72, "STOP");
+    }
     const imm = bus.read16(cpu.pc);
-    cpu.pc += 2;
-    cpu.sr.set(imm);
+    const old_s = cpu.sr.s;
+    cpu.sr.set(imm & 0xA71F);
+    const new_s = cpu.sr.s;
+    if (old_s and !new_s) {
+        cpu.ssp = cpu.a[7];
+        cpu.a[7] = cpu.usp;
+    } else if (!old_s and new_s) {
+        cpu.usp = cpu.a[7];
+        cpu.a[7] = cpu.ssp;
+    }
     cpu.halted = true;
+    cpu.pc -= 2;
     return 4;
 }
 

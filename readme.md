@@ -172,7 +172,7 @@ python ./decode
 | RTS | 2500 | 1263 | 12365 | ![50.5%](https://img.shields.io/badge/50.5%25-orange) | ![50.5%](https://img.shields.io/badge/50.5%25-orange) | ![—](https://img.shields.io/badge/---lightgrey) |
 | SBCD | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![—](https://img.shields.io/badge/---lightgrey) |
 | Scc | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) |
-| STOP | 2500 | 0 | 13049 | ![0.0%](https://img.shields.io/badge/0.0%25-red) | ![0.0%](https://img.shields.io/badge/0.0%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
+| STOP | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![—](https://img.shields.io/badge/---lightgrey)
 | SUB.b | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) |
 | SUB.l | 2500 | 1599 | 14441 | ![64.0%](https://img.shields.io/badge/64.0%25-orange) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
 | SUB.w | 2500 | 1579 | 14589 | ![63.2%](https://img.shields.io/badge/63.2%25-orange) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
