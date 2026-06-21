@@ -63,8 +63,8 @@ fn execShiftRotate(cpu: *Cpu, bus: anytype, opcode: u16) u32 {
     return switch (kind) {
         0b00 => execAS(cpu, dr, size, reg, count),
         0b01 => execLS(cpu, dr, size, reg, count),
-        0b10 => execRO(cpu, dr, size, reg, count),
-        0b11 => execROX(cpu, dr, size, reg, count),
+        0b10 => execROX(cpu, dr, size, reg, count),
+        0b11 => execRO(cpu, dr, size, reg, count),
     };
 }
 
@@ -208,21 +208,33 @@ fn execRO(cpu: *Cpu, dr: u1, size: Size, reg: u3, count: u32) u32 {
 
 fn execShiftRotateMem(cpu: *Cpu, bus: anytype, opcode: u16) u32 {
     const dr: u1 = @truncate((opcode >> 8) & 0x1);
-    const kind: u2 = @truncate((opcode >> 4) & 0x3);
+    const kind: u2 = @truncate((opcode >> 9) & 0x3);
     const mode: u3 = @truncate((opcode >> 3) & 0x7);
     const reg: u3 = @truncate(opcode & 0x7);
     const ea = EA{ .mode = mode, .reg = reg };
 
-    const val: u16 = @truncate(readEA(cpu, bus, ea, .word));
-
-    const result = switch (kind) {
-        0b00 => memAS(cpu, dr, val),
-        0b01 => memLS(cpu, dr, val),
-        0b10 => memROX(cpu, dr, val),
-        0b11 => memRO(cpu, dr, val),
-    };
-
-    writeEA(cpu, bus, ea, .word, result);
+    if (mode == 0b000 or mode == 0b001) {
+        // Register modes — safe to use readEA/writeEA (no resolveEA called)
+        const val: u16 = @truncate(readEA(cpu, bus, ea, .word));
+        const result: u16 = switch (kind) {
+            0b00 => memAS(cpu, dr, val),
+            0b01 => memLS(cpu, dr, val),
+            0b10 => memROX(cpu, dr, val),
+            0b11 => memRO(cpu, dr, val),
+        };
+        writeEA(cpu, bus, ea, .word, result);
+    } else {
+        // Memory modes — resolve EA ONCE, then read + compute + write
+        const addr = parent.resolveEA(cpu, bus, ea, .word);
+        const val: u16 = @truncate(parent.readMem(bus, addr, .word));
+        const result: u16 = switch (kind) {
+            0b00 => memAS(cpu, dr, val),
+            0b01 => memLS(cpu, dr, val),
+            0b10 => memROX(cpu, dr, val),
+            0b11 => memRO(cpu, dr, val),
+        };
+        parent.writeMem(bus, addr, .word, result);
+    }
 
     return switch (mode) {
         0b010 => 8,

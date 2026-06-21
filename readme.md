@@ -155,12 +155,12 @@ python ./decode
 | ORItoSR | 2500 | 14 | 11449 | ![0.6%](https://img.shields.io/badge/0.6%25-red) | ![0.6%](https://img.shields.io/badge/0.6%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
 | PEA | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) |
 | RESET | 2500 | 1233 | 10000 | ![49.3%](https://img.shields.io/badge/49.3%25-orange) | ![49.3%](https://img.shields.io/badge/49.3%25-orange) | ![—](https://img.shields.io/badge/---lightgrey) |
-| ROL.b | 2500 | 190 | 3982 | ![7.6%](https://img.shields.io/badge/7.6%25-red) | ![7.6%](https://img.shields.io/badge/7.6%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
-| ROL.l | 2500 | 180 | 3777 | ![7.2%](https://img.shields.io/badge/7.2%25-red) | ![7.2%](https://img.shields.io/badge/7.2%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
-| ROL.w | 2500 | 190 | 8511 | ![7.6%](https://img.shields.io/badge/7.6%25-red) | ![8.8%](https://img.shields.io/badge/8.8%25-red) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
-| ROR.b | 2500 | 204 | 4170 | ![8.2%](https://img.shields.io/badge/8.2%25-red) | ![8.2%](https://img.shields.io/badge/8.2%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
-| ROR.l | 2500 | 185 | 4217 | ![7.4%](https://img.shields.io/badge/7.4%25-red) | ![7.4%](https://img.shields.io/badge/7.4%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
-| ROR.w | 2500 | 156 | 8965 | ![6.2%](https://img.shields.io/badge/6.2%25-red) | ![7.3%](https://img.shields.io/badge/7.3%25-red) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
+| ROL.b | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![—](https://img.shields.io/badge/---lightgrey) |
+| ROL.l | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![—](https://img.shields.io/badge/---lightgrey) |
+| ROL.w | 2500 | 2209 | 4598 | ![88.4%](https://img.shields.io/badge/88.4%25-green) | ![88.4%](https://img.shields.io/badge/88.4%25-green) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
+| ROR.b | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![—](https://img.shields.io/badge/---lightgrey) |
+| ROR.l | 2500 | 2500 | 0 | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![—](https://img.shields.io/badge/---lightgrey) |
+| ROR.w | 2500 | 2203 | 4700 | ![88.1%](https://img.shields.io/badge/88.1%25-green) | ![88.1%](https://img.shields.io/badge/88.1%25-green) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
 | ROXL.b | 2500 | 175 | 4047 | ![7.0%](https://img.shields.io/badge/7.0%25-red) | ![7.0%](https://img.shields.io/badge/7.0%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
 | ROXL.l | 2500 | 196 | 3748 | ![7.8%](https://img.shields.io/badge/7.8%25-red) | ![7.8%](https://img.shields.io/badge/7.8%25-red) | ![—](https://img.shields.io/badge/---lightgrey) |
 | ROXL.w | 2500 | 188 | 8216 | ![7.5%](https://img.shields.io/badge/7.5%25-red) | ![8.7%](https://img.shields.io/badge/8.7%25-red) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
@@ -188,7 +188,7 @@ python ./decode
 | TST.w | 2500 | 1507 | 15714 | ![60.3%](https://img.shields.io/badge/60.3%25-orange) | ![Complet](https://img.shields.io/badge/Complet-brightgreen) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
 | UNLINK | 2500 | 7 | 20557 | ![0.3%](https://img.shields.io/badge/0.3%25-red) | ![0.5%](https://img.shields.io/badge/0.5%25-red) | ![0.0%](https://img.shields.io/badge/0.0%25-red) |
 
-**Total :** 317 500 tests — **936 417 échecs** d'assertions.
+**Total :** 317 500 tests — **912 093 échecs** d'assertions.
 
 ---
 
