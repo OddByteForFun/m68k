@@ -8,6 +8,9 @@ Projet d'émulation du **Motorola 68000**.
 Il s'agit d'un projet plus global visant à émuler la console **Sega Mega Drive / Genesis**. 
 L'objectif est d'atteindre une précision compatible avec les jeux commerciaux.  
 
+> Motorola 68000 (M68k) CPU emulator core in Zig.
+> Keywords: Motorola 68000, M68K, Mega Drive, Genesis, Sega, emulator, CPU, Zig.
+
 ## Composition du projet
 
 ```
